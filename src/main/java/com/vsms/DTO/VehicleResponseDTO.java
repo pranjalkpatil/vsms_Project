@@ -1,0 +1,15 @@
+package com.vsms.DTO;
+
+import lombok.Data;
+
+@Data
+public class VehicleResponseDTO {
+
+    private String id;
+    private String registrationNumber;
+    private String model;
+    private String year;
+    private String fuelType;
+    private String customerId;
+    private String customerName;
+}

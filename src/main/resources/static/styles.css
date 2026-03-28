@@ -1,0 +1,68 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #004080;
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+nav {
+    background-color: #e3e3e3;
+    padding: 1em;
+    text-align: center;
+}
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #004080;
+}
+.form-container, .content {
+    width: 60%;
+    margin: 2em auto;
+    background: white;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #ccc;
+}
+input, select, button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1em;
+}
+button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0066cc;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+table, th, td {
+    border: 1px solid #ccc;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+.status-booked {
+    color: orange;
+}
+.status-completed {
+    color: green;
+}
+.status-cancelled {
+    color: red;
+}

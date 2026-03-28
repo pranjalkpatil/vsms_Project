@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>View Service Booking</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<div th:replace="admin/navbar :: navbar"></div>
+
+<div class="max-w-4xl mx-auto p-6">
+  <div class="bg-white shadow-lg rounded-lg p-6">
+    <h2 class="text-3xl font-bold mb-4 text-gray-800 border-b pb-2">Service Booking Details</h2>
+
+    <div class="space-y-2 text-lg">
+      <p><span class="font-semibold text-gray-700">Customer:</span> <span th:text="${booking.customerName}"></span></p>
+      <p><span class="font-semibold text-gray-700">Vehicle:</span> <span th:text="${booking.vehicleNumber}"></span></p>
+      <p><span class="font-semibold text-gray-700">Service Center:</span> <span th:text="${booking.serviceCenterName}"></span></p>
+      <p><span class="font-semibold text-gray-700">Booking Date:</span> <span th:text="${#temporals.format(booking.bookingDate, 'yyyy-MM-dd HH:mm')}"></span></p>
+      <p><span class="font-semibold text-gray-700">Service Date:</span> <span th:text="${#temporals.format(booking.serviceDate, 'yyyy-MM-dd HH:mm')}"></span></p>
+      <p><span class="font-semibold text-gray-700">Status:</span> <span th:text="${booking.status}"></span></p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

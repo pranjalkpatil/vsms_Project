@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Customer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<div th:replace="admin/navbar :: navbar"></div>
+
+<div class="max-w-4xl mx-auto p-6">
+    <div class="bg-white shadow-lg rounded-lg p-6">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800 border-b pb-2">Customer Details</h2>
+
+        <div class="space-y-2 text-lg">
+            <p><span class="font-semibold text-gray-700">Name:</span> <span th:text="${customer.name}"></span></p>
+            <p><span class="font-semibold text-gray-700">Email:</span> <span th:text="${customer.email}"></span></p>
+            <p><span class="font-semibold text-gray-700">Phone:</span> <span th:text="${customer.phone}"></span></p>
+        </div>
+
+        <div class="mt-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Registered Vehicles</h3>
+            <ul class="list-disc list-inside text-gray-700 space-y-1" th:if="${customer.vehicles.size() > 0}">
+                <li th:each="v : ${customer.vehicles}" th:text="${v.registrationNumber + ' - ' + v.model}"></li>
+            </ul>
+            <p th:if="${customer.vehicles.size() == 0}" class="text-gray-500">No vehicles registered.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

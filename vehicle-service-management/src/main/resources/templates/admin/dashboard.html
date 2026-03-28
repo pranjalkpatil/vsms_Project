@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+<div th:replace="admin/navbar :: navbar"></div>
+
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Admin Dashboard</h1>
+
+    <!-- Summary Section -->
+    <div class="grid grid-cols-4 gap-4 mb-6">
+        <div class="bg-white p-4 rounded shadow">
+            <h2 class="text-lg font-semibold">Total Customers</h2>
+            <p class="text-2xl font-bold text-blue-600" th:text="${totalCustomers}">0</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+            <h2 class="text-lg font-semibold">Total Vehicles</h2>
+            <p class="text-2xl font-bold text-green-600" th:text="${totalVehicles}">0</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+            <h2 class="text-lg font-semibold">Total Bookings</h2>
+            <p class="text-2xl font-bold text-purple-600" th:text="${totalBookings}">0</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+            <h2 class="text-lg font-semibold">Service Centers</h2>
+            <p class="text-2xl font-bold text-yellow-600" th:text="${totalCenters}">0</p>
+        </div>
+    </div>
+
+    <!-- Customers Table -->
+    <div class="bg-white rounded shadow p-4 mb-6">
+        <h2 class="text-xl font-semibold mb-4">Customers</h2>
+        <table class="w-full text-left border">
+            <thead class="bg-gray-100">
+            <tr>
+                <th class="border p-2">Name</th>
+                <th class="border p-2">Email</th>
+                <th class="border p-2">Vehicles</th>
+                <th class="border p-2">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${customers}">
+                <td class="border p-2" th:text="${c.name}"></td>
+                <td class="border p-2" th:text="${c.email}"></td>
+                <td class="border p-2" th:text="${c.vehicles.size()}"></td>
+                <td class="border p-2">
+                    <a th:href="@{'/view-customer/' + ${c.id}}" class="text-blue-600">View</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Vehicles Table -->
+    <div class="bg-white rounded shadow p-4 mb-6">
+        <h2 class="text-xl font-semibold mb-4">Vehicles</h2>
+        <table class="w-full text-left border">
+            <thead class="bg-gray-100">
+            <tr>
+                <th class="border p-2">Reg. Number</th>
+                <th class="border p-2">Model</th>
+                <th class="border p-2">Customer</th>
+                <th class="border p-2">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="v : ${vehicles}">
+                <td class="border p-2" th:text="${v.registrationNumber}"></td>
+                <td class="border p-2" th:text="${v.model}"></td>
+                <td class="border p-2" th:text="${v.customerName}"></td>
+                <td class="border p-2">
+                    <a th:href="@{'/view-vehicle/' + ${v.id}}" class="text-blue-600">View</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bookings Table -->
+    <div class="bg-white rounded shadow p-4 mb-6">
+        <h2 class="text-xl font-semibold mb-4">Service Bookings</h2>
+        <table class="w-full text-left border">
+            <thead class="bg-gray-100">
+            <tr>
+                <th class="border p-2">Customer</th>
+                <th class="border p-2">Vehicle</th>
+                <th class="border p-2">Center</th>
+                <th class="border p-2">Status</th>
+                <th class="border p-2">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="b : ${bookings}">
+                <td class="border p-2" th:text="${b.customerName}"></td>
+                <td class="border p-2" th:text="${b.vehicleNumber}"></td>
+                <td class="border p-2" th:text="${b.serviceCenterName}"></td>
+                <td class="border p-2" th:text="${b.status}"></td>
+                <td class="border p-2">
+                    <a th:href="@{'/view-booking/' + ${b.id}}" class="text-blue-600">View</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Service Centers Table -->
+    <div class="bg-white rounded shadow p-4">
+        <h2 class="text-xl font-semibold mb-4">Service Centers</h2>
+        <table class="w-full text-left border">
+            <thead class="bg-gray-100">
+            <tr>
+                <th class="border p-2">Name</th>
+                <th class="border p-2">Contact</th>
+                <th class="border p-2">Bookings</th>
+                <th class="border p-2">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="s : ${centers}">
+                <td class="border p-2" th:text="${s.name}"></td>
+                <td class="border p-2" th:text="${s.contactNumber}"></td>
+                <td class="border p-2" th:text="${s.bookings.size()}"></td>
+                <td class="border p-2">
+                    <a th:href="@{'/view-center/' + ${s.id}}" class="text-blue-600">View</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>View Service Booking</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<div th:replace="admin/navbar :: navbar"></div>
+
+<div class="max-w-4xl mx-auto p-6">
+  <div class="bg-white shadow-lg rounded-lg p-6">
+    <h2 class="text-3xl font-bold mb-4 text-gray-800 border-b pb-2">Vehicle Details</h2>
+
+    <div class="space-y-2 text-lg">
+      <p><span class="font-semibold text-gray-700">Customer:</span> <span th:text="${vehicle.customerName}"></span></p>
+      <p><span class="font-semibold text-gray-700">Registration Number:</span> <span th:text="${vehicle.registrationNumber}"></span></p>
+      <p><span class="font-semibold text-gray-700">Model:</span> <span th:text="${vehicle.model}"></span></p>
+      <p><span class="font-semibold text-gray-700">year:</span> <span th:text="${vehicle.year}"></span></p>
+      <p><span class="font-semibold text-gray-700">Fuel Type:</span> <span th:text="${vehicle.fuelType}"></span></p>
+
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

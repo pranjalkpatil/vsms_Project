@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Update Vehicle</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="vehicle/navbar :: navbar"></div>
+
+<div class="container mx-auto p-4">
+  <h2 class="text-2xl font-bold mb-4">Update Vehicle</h2>
+  <form action="/vehicle/update" method="post" class="space-y-4">
+    <input type="hidden" name="id" th:value="${vehicle.id}"/>
+
+    <input type="text" name="registrationNumber" th:value="${vehicle.registrationNumber}" required class="border p-2 w-full"/>
+
+    <input type="text" name="model" th:value="${vehicle.model}" required class="border p-2 w-full"/>
+    <input type="text" name="year" th:value="${vehicle.year}" required class="border p-2 w-full"/>
+    <input type="text" name="fuelType" th:value="${vehicle.fuelType}" required class="border p-2 w-full"/>
+
+    <select name="customerId" required class="border p-2 w-full">
+      <option value="" disabled>Select Customer</option>
+      <option th:each="cust : ${customers}"
+              th:value="${cust.id}"
+              th:text="${cust.name}"
+              th:selected="${cust.id == vehicle.customerId}">
+      </option>
+    </select>
+
+    <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded">Update Vehicle</button>
+  </form>
+
+</div>
+</body>
+</html>
